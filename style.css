@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1B2838;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #171A21;
+    color: white;
+    text-align: center;
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+header,
+form {
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form,
+ul {
+    width: 100%;
+    margin: auto;
+    background-color: #101822;
+}
+
+form input,
+form button {
+    padding: 0.1rem;
+    font-size: 2rem;
+    border: none;
+}
+
+form input {
+    width: 80%;
+    padding: 0 0.5rem;
+    font-size: 1rem;
+    height: 3rem;
+}
+
+form input:focus {
+    outline: none;
+}
+
+form button {
+    background-color: #fff;
+}
+
+form button .fa-plus-square {
+    color: #0082FC;
+    font-size: 2.7rem;
+    background-color: transparent;
+}
+
+.todo-ul {
+    margin-top: 1rem;
+    min-width: 30%;
+    list-style: none;
+}
+
+.todo-container {
+    background-color: #101822;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-todo {
+    width: 95%;
+    color: #fff;
+    height: 2rem;
+    border: none;
+    background-color: #143C56;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.fa-plus-square {
+    cursor: pointer;
+}
+
+
+
+/********************* TO DO DIVS *********************/
+
+.todoDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem;
+    transition: all 0.5s ease;
+
+}
+
+.todoDivList {
+    height: 2rem;
+    background-color: rgb(238, 234, 234);
+}
+
+.todoDiv li {
+    padding: 0 0.5rem;
+    font-size: 0.7rem;
+    flex: 1;
+    border: none;
+}
+
+.checkBtn,
+.trashBtn {
+    background-color: rgb(168, 34, 34);
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.checkBtn {
+    background-color: green;
+}
+
+.fa-trash,
+.fa-check {
+    pointer-events: none;
+}
+
+.itemCompleted {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.itemDeleted {
+    transform: translateY(8rem) rotateZ(20deg);
+    opacity: 0;
+}
+
+@media (min-width: 767px) {
+
+    form {
+        padding: 2rem 1rem;
+        max-width: 40rem;
+    }
+
+    .form-input {
+        width: 100%;
+    }
+
+    .filter-todo {
+        width: 100%;
+    }
+
+    .todo-container {
+        padding: 2rem 1rem;
+        max-width: 40rem;
+        margin: auto;
+    }
+
+    .todo-ul {
+        padding: 0;
+        width: 100%;
+    }
+
+}
