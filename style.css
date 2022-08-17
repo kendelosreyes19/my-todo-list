@@ -28,6 +28,10 @@ form {
     align-items: center;
 }
 
+form {
+    padding: 2rem 1rem;
+}
+
 form,
 ul {
     width: 100%;
@@ -35,32 +39,39 @@ ul {
     background-color: #101822;
 }
 
-form input,
-form button {
-    padding: 0.1rem;
-    font-size: 2rem;
-    border: none;
-}
-
-form input {
-    width: 80%;
-    padding: 0 0.5rem;
+.form-input {
+    width: 100%;
     font-size: 1rem;
-    height: 3rem;
 }
 
-form input:focus {
+.form-input:focus {
     outline: none;
 }
 
-form button {
-    background-color: #fff;
+.form-input,
+.form-button {
+    height: 2.5rem;
+    padding: 0.5rem;
+    background: white;
+    border: none;
 }
 
-form button .fa-plus-square {
+.form-button {
     color: #0082FC;
-    font-size: 2.7rem;
-    background-color: transparent;
+    cursor: pointer;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.form-button:hover {
+    color: #fff;
+    background-color: #0082FC;
+    transition: all 0.3s ease;
+}
+
+.fa-plus-square {
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 .todo-ul {
