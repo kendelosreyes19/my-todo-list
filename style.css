@@ -29,6 +29,7 @@ form {
 }
 
 form {
+    position: relative;
     padding: 2rem 1rem;
 }
 
@@ -43,6 +44,17 @@ ul {
     width: 100%;
     font-size: 1rem;
 }
+
+
+.inputMessageCSS {
+    position: absolute;
+    display: none;
+    left: 15px;
+    bottom: 5px;
+    color: red;
+    font-size: 0.8rem;
+}
+
 
 .form-input:focus {
     outline: none;
@@ -101,7 +113,6 @@ ul {
 .fa-plus-square {
     cursor: pointer;
 }
-
 
 
 /********************* TO DO DIVS *********************/

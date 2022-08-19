@@ -4,78 +4,62 @@ const todoInput = document.querySelector('.form-input')
 const todoButton = document.querySelector('.form-button')
 const todoList = document.querySelector('.todo-ul')
 const filterOption = document.querySelector('.filter-todo')
+const pError = document.querySelector('.inputMessageCSS')
 
-// EVENT LISTENER
-document.addEventListener('DOMContentLoaded', getTodos)
-todoButton.addEventListener('click', addTodo)
-todoList.addEventListener('click', deleteCheck)
-filterOption.addEventListener('click', filterTodo)
+
 // FUNCTIONS
 
-function addTodo(event) {
-    // prevent from submitting the form
-    event.preventDefault();
+const addTodo = (event) => {
 
-    // todo div
+    if (todoInput.value === "") {
+        pError.style.display = "block"
+        // prevent from submitting the form
+        event.preventDefault();
 
-    const todoDiv = document.createElement('div')
-    todoDiv.classList.add('todoDiv')
+    } else {
+        // prevent from submitting the form
+        event.preventDefault();
+        pError.style.display = "none"
+        // todo div
 
-    // create <li>
+        const todoDiv = document.createElement('div')
+        todoDiv.classList.add('todoDiv')
 
-    const todoDivList = document.createElement('li')
-    todoDivList.innerText = todoInput.value
-    todoDiv.classList.add('todoDivList')
-    todoDiv.appendChild(todoDivList)
+        // create <li>
 
-    // add items to the LocalStorage
+        const todoDivList = document.createElement('li')
+        todoDivList.innerText = todoInput.value
+        todoDiv.classList.add('todoDivList')
+        todoDiv.appendChild(todoDivList)
 
-    saveLocalTodos(todoInput.value)
+        // add items to the LocalStorage
 
-    // check mark button
+        saveLocalTodos(todoInput.value)
 
-    const checkBtn = document.createElement('button')
-    checkBtn.innerHTML = '<li class= "fas fa-check"></li>'
-    checkBtn.classList.add('checkBtn')
-    todoDiv.appendChild(checkBtn)
+        // check mark button
 
-    // trash button
+        const checkBtn = document.createElement('button')
+        checkBtn.innerHTML = '<li class= "fas fa-check"></li>'
+        checkBtn.classList.add('checkBtn')
+        todoDiv.appendChild(checkBtn)
 
-    const trashBtn = document.createElement('button')
-    trashBtn.innerHTML = '<li class= "fas fa-trash"></li>'
-    trashBtn.classList.add('trashBtn')
-    todoDiv.appendChild(trashBtn)
+        // trash button
 
-    // append to LIST
-    todoList.appendChild(todoDiv)
+        const trashBtn = document.createElement('button')
+        trashBtn.innerHTML = '<li class= "fas fa-trash"></li>'
+        trashBtn.classList.add('trashBtn')
+        todoDiv.appendChild(trashBtn)
 
-    // clear the INPUT
-    todoInput.value = ""
-    todoInput.focus()
-}
+        // append to LIST
+        todoList.appendChild(todoDiv)
 
-function deleteCheck(e) {
-    const item = e.target
-
-    // deleting todo items
-    if (item.classList[0] === 'trashBtn') {
-        const parentItem = item.parentElement
-        // animation
-        parentItem.classList.add('itemDeleted')
-        removeLocalTodos(parentItem)
-        addEventListener('transitionend', () => {
-            parentItem.remove()
-        });
-
-    }
-    // crossing out todo items
-    if (item.classList[0] === 'checkBtn') {
-        const parentItem = item.parentElement
-        parentItem.classList.toggle('itemCompleted')
+        // clear the INPUT
+        todoInput.value = ""
+        todoInput.focus()
     }
 }
 
-function filterTodo(e) {
+const filterTodo = (e) => {
     const todos = todoList.childNodes;
     todos.forEach(function (todo) {
         const mStyle = todo.style;
@@ -103,7 +87,28 @@ function filterTodo(e) {
     })
 }
 
-function saveLocalTodos(todo) {
+const deleteCheck = (e) => {
+    const item = e.target
+
+    // deleting todo items
+    if (item.classList[0] === 'trashBtn') {
+        const parentItem = item.parentElement
+        // animation
+        parentItem.classList.add('itemDeleted')
+        removeLocalTodos(parentItem)
+        addEventListener('transitionend', () => {
+            parentItem.remove()
+        });
+
+    }
+    // crossing out todo items
+    if (item.classList[0] === 'checkBtn') {
+        const parentItem = item.parentElement
+        parentItem.classList.toggle('itemCompleted')
+    }
+}
+
+const saveLocalTodos = (todo) => {
     // check if there's alread a local storage
     let todos;
     if (localStorage.getItem('todos') === null) {
@@ -115,7 +120,7 @@ function saveLocalTodos(todo) {
     localStorage.setItem("todos", JSON.stringify(todos))
 }
 
-function getTodos() {
+const getTodos = () => {
     // check if there's alread a local storage
     let todos;
     if (localStorage.getItem('todos') === null) {
@@ -147,7 +152,7 @@ function getTodos() {
     })
 }
 
-function removeLocalTodos(todo) {
+const removeLocalTodos = (todo) => {
     // check if there's alread a local storage
     let todos;
     if (localStorage.getItem('todos') === null) {
@@ -160,3 +165,10 @@ function removeLocalTodos(todo) {
     todos.splice(todos.indexOf(todoIndex), 1)
     localStorage.setItem("todos", JSON.stringify(todos))
 }
+
+// EVENT LISTENER
+
+document.addEventListener('DOMContentLoaded', getTodos)
+todoButton.addEventListener('click', addTodo)
+todoList.addEventListener('click', deleteCheck)
+filterOption.addEventListener('click', filterTodo)
