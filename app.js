@@ -61,7 +61,7 @@ const addTodo = (event) => {
 
 const filterTodo = (e) => {
     const todos = todoList.childNodes;
-    todos.forEach(function (todo) {
+    todos.forEach((todo) => {
         const mStyle = todo.style;
         if (mStyle != undefined && mStyle != null) {
             switch (e.target.value) {
@@ -128,7 +128,7 @@ const getTodos = () => {
     } else {
         todos = JSON.parse(localStorage.getItem("todos"))
     }
-    todos.forEach(function (todo) {
+    todos.forEach((todo) => {
         // todo div
         const todoDiv = document.createElement('div')
         todoDiv.classList.add('todoDiv')
